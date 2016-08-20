@@ -63,38 +63,40 @@ These arguments are currently for the `boilerplate` action only.
 
 There are 3 actions possible when using the UI generator.
 
-**1. Generate UI component files** - simply create boilerplate files (js, styles, templates). Recommended to run generator from project's root for this option.
-You'll be asked for:
+**1. Generate UI component files** - simply create boilerplate files (js, styles, templates). 
+Recommended to run generator from project's root for this option.
+Generator will prompt the following questions:
  * path - where to put the new component (default: cwd)
  * component folder name - folder to be created under specified path (default: MyComponent)
  * component name - component's class name inside JS file (default: MyComponent)
  * UI type (React, React-F1, or Bigwheel)
- * whether you want to rename your index.js (e.g MyComponent.js). Default is 'No'
+ * whether the user want to rename your index.js (e.g MyComponent.js). Default is 'No'
  
 Generator will copy files into new component folder and show it in your file browser
 
-**2. Create UI module** - generate UI module with boilerplate files and set up a test and example. Recommended that you have a specific global folder for all your generated modules. You'll be asked for:
+**2. Create UI module** - generate UI module with boilerplate files and set up test and example. Suggested that you have a specific global folder for all your generated modules. 
+Generator will prompt the following questions:
  * path - where to put the new component (default: your modules folder e.g `/Users/name/modules/`)
  * module name - respective folder will be created under specified path
- * other module specific questions like description, kew words etc
+ * module specific questions such as description, kew words etc
  * component name - component's class name inside JS file (default: MyComponent)
  * UI type (React, React-F1, or Bigwheel)
  
-Generator will copy files into new component folder, install all dependencies, show component folder in your file browser and run example in your browser.
+Generator will copy appropriate files into new component folder, install dependencies, open component folder in the file viewer and run example in the web browser.
 
-Afterwards, you'll be asked about publishing the UI module to GitHub and npm.
+Afterwards, the user will be asked about publishing the UI module to GitHub and npm.
 
-**3. Post publish** - publish existing component as module. **IMPORTANT: to run this, you have to be in the component folder**. Generator will try to read existing config file and get the information about UI type, index file name, etc. If `nyg-cfg.json` is missing in the component folder or no information about type or name is available, then user will be asked about it.
+**3. Post publish** - publish existing component as module. **IMPORTANT: to run this, you have to be in the component folder**. Generator will try to read existing config file and get the information about UI type, index file name, etc.
  
-Generator will proceed with similar to **Create UI module** steps. Suggested that files will be copied to and published from your default modules folder (e.g. `/Users/name/modules/`) which you will be asked about.
-
-NOTE: when reading `nyg-cfg.json` and detecting index file (for pointing examples/tests files):
-  * if there's file named`index.js` or there's only one JS file exists in the component root, it will be assigned as index
-  * if there's no `index.js` and there are multiple JS files and no rename information in the config file, then user will be prompted to choose their index file (entry point) from the list
+When reading `nyg-cfg.json`:
+  * if there's a file named`index.js` or there's only one JS file exists in the component root, or config file contains rename informaion, the respective file will be assigned as index. Otherwise, the user will be asked to choose it from the list
+  * if there's no UI type information contained in the config file, the user will be prompted to choose it from the list
  
-If there are any problems with reading ```nyg-cfg.json``` and generator unexpectedly exits, the user can try removing the config file, then they will be prompted for missing info.
+Note: Should any problem arise during reading reading ```nyg-cfg.json``` with further unexpected generator exit, the user can try removing the config file, then they will be prompted for missing info.
 
-Generator  will try to detect all dependencies based on imports (requires) reading them recursively, then install all module dependencies and bring all local dependencies into ```lib``` folder of your target directory, overwriting imports paths. Note that this will use ```acorn-jsx``` module to parse your jsx and some syntax may not be supported such as ```static```, so you would have to resolve it manually.
+Generator will proceed with similar to **Create UI module** steps. Suggested that files will be copied to and published from your default modules folder (e.g. `/Users/name/modules/`) which you will be asked about upon installation.
+
+Generator will try to detect all dependencies (modules as well as local files) based on imports (requires) reading them recursively, then install all module dependencies and bring all local dependencies into ```lib``` folder inside your target directory, overwriting import paths. Note that this will use ```acorn-jsx``` module to parse your jsx and some syntax may not be supported such as ```static```, so you would have to resolve it manually.
 
 ## Test
 To manually run the example in your browser
