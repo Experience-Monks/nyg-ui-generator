@@ -42,6 +42,7 @@ class {{component}} extends React.Component {
 
     return (
       <ReactF1
+        data-f1="container"
         className={`${className} ${this.props.className}`}
         style={style}
         go={this.state.state}
@@ -49,9 +50,7 @@ class {{component}} extends React.Component {
         states={states(this.props)}
         transitions={transitions(this.props)}
       >
-        <div data-f1="container">
           This is {{component}} (React-F1 component)
-        </div>
       </ReactF1>
     );
   }

@@ -11,10 +11,9 @@
   },
   "dependencies": {
     "domready": "^1.0.8",
-    "eases": "^1.0.8",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
-    "react-f1": "^5.0.4"
+    "react-f1": "^8.0.1"
   },
   "devDependencies": {
     "babel-core": "^6.10.4",
